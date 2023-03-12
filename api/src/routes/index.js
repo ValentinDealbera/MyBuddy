@@ -74,4 +74,21 @@ router.get('/temperaments', async (req, res)=>{
     }
 })
 
+router.post('/dogs', async (req, res)=>{
+    try {
+        const {name, image, height, weight, life_span} = req.body
+        const dog = {
+            name,
+            image,
+            height,
+            weight,
+            life_span
+        }
+        await Dog.create(dog)
+        res.status(201).json(dog) 
+    } catch (error) {
+      res.status(500).json({error: error.message})  
+    }
+})
+
 module.exports = router;

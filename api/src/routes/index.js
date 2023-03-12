@@ -72,7 +72,8 @@ router.get('/dogs/name', async (req, res)=>{
                 image: e.image.url,
                 weight: e.weight.metric,
                 height: e.height.metric,
-                life_span: e.life_span
+                life_span: e.life_span,
+                temperament: e.temperament
             }
         })
         const allDogs = [...formatedDogs, ...formatedDatabaseDogs]
@@ -116,7 +117,8 @@ router.get('/dogs/:idRaza', async (req, res)=>{
                 image: e.image.url,
                 weight: e.weight.metric,
                 height: e.height.metric,
-                life_span: e.life_span
+                life_span: e.life_span,
+                temperament: e.temperament
             }
         })
         const allDogs = [...formatedDogs, ...formatedDatabaseDogs]

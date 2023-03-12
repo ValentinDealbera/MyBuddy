@@ -25,8 +25,13 @@ router.get('/dogs/name', async (req, res)=>{
         const dataBaseDogs = await Dog.findAll()
         const allDogs = [...dogsApi.data, ...dataBaseDogs]
         const specificDog = allDogs.filter(e=>e.name.toLowerCase().includes(name))
-        console.log(name);
-        res.status(200).json(specificDog)
+        if (!name){
+            return res.status(400).json({error: 'Ingresa una raza'})
+        }
+        if(specificDog.length === 0) {
+            return res.status(400).json({error: 'Raza inexistente'})
+        }
+        return res.status(200).json(specificDog)
     } catch (error) {
         res.status(500).json({error: error.message})
     }
@@ -75,8 +80,17 @@ router.get('/temperaments', async (req, res)=>{
 })
 
 router.post('/dogs', async (req, res)=>{
+    const dogsApi = await axios.get('https://api.thedogapi.com/v1/breeds')
+        const dataBaseDogs = await Dog.findAll()
+        const allDogs = [...dogsApi.data, ...dataBaseDogs]
     try {
         const {name, image, height, weight, life_span} = req.body
+        if (allDogs.find(e=>e.name.toLowerCase() === name.toLowerCase())){
+            return res.status(400).json({error: 'La raza ingresada ya existe'})
+        }
+        if (!name || !image || !height || !weight || !life_span){
+            return res.status(400).json({error: 'Debes completar todos los datos'})
+        }
         const dog = {
             name,
             image,
@@ -85,7 +99,7 @@ router.post('/dogs', async (req, res)=>{
             life_span
         }
         await Dog.create(dog)
-        res.status(201).json(dog) 
+        return res.status(201).json(dog) 
     } catch (error) {
       res.status(500).json({error: error.message})  
     }

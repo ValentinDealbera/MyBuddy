@@ -13,7 +13,7 @@ function App() {
   const location = useLocation()
   
   useEffect(()=>{
-    return location.pathname==='/' ? navigate('/landing') : null
+    return location.pathname==='/' ? navigate('/landing') : navigate(location.pathname)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 

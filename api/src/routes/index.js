@@ -151,8 +151,8 @@ router.get('/temperaments', async (req, res)=>{
                 name: element
             }
         })
-        await Temperament.bulkCreate(finalArr, {ignoreDuplicates: true})
-        res.status(200).send('Temperaments added succesfully!')
+        const end = await Temperament.bulkCreate(finalArr, {ignoreDuplicates: true})
+        res.status(200).json(end)
     } catch (error) {
         res.status(500).json({error: error.message})
     }

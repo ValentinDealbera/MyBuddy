@@ -3,11 +3,15 @@ import {
   FILTER_BY_TEMPERAMENTS,
   FILTER_BY_RACE,
   ORDER_DOGS,
+  EMPTY_FILTER,
+  GET_TEMPERAMENTS
 } from "./actions";
 
 const initialState = {
   allDogs: [],
+  dogsToFilter: [],
   filteredDogs: [],
+  temperaments: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -17,11 +21,13 @@ const reducer = (state = initialState, action) => {
         ...state,
         allDogs: action.payload,
         filteredDogs: action.payload,
+        dogsToFilter: action.payload
       };
     case FILTER_BY_TEMPERAMENTS:
       state.filteredDogs = state.allDogs;
       const filteredArray = state.filteredDogs.filter((e) =>
-        e.temperament.includes(action.payload)
+        // e.temperament.includes(action.payload)
+        e.temperament = action.payload
       );
       return {
         ...state,
@@ -38,13 +44,25 @@ const reducer = (state = initialState, action) => {
       };
     case ORDER_DOGS:
       state.filteredDogs = state.allDogs;
+      const sortedArray = action.payload === "ascendente"
+      ? state.filteredDogs.sort((a, b) =>
+      a.name.localeCompare(b.name))
+      : state.filteredDogs.sort((a, b) =>
+      b.name.localeCompare(a.name));
       return {
         ...state,
-        filteredDogs:
-          action.payload.toLowerCase() === "ascendente"
-            ? state.myFavorites.sort((a, b) => a.name - b.name)
-            : state.myFavorites.sort((a, b) => b.name - a.name),
+        filteredDogs: sortedArray
       };
+    case EMPTY_FILTER:
+      return {
+        ...state,
+        filteredDogs: []
+      }
+    case GET_TEMPERAMENTS:
+      return {
+        ...state,
+        temperaments: action.payload
+      }
     default:
       return {
         ...state,

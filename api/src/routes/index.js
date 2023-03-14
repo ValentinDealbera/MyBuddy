@@ -152,7 +152,8 @@ router.get('/temperaments', async (req, res)=>{
             }
         })
         const end = await Temperament.bulkCreate(finalArr, {ignoreDuplicates: true})
-        res.status(200).json(end)
+        const final = await Temperament.findAll()
+        res.status(200).json(final)
     } catch (error) {
         res.status(500).json({error: error.message})
     }

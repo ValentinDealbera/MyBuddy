@@ -66,7 +66,7 @@ const Cards = (props) => {
   );
 };
 
-export function mapStateToProps(state) {
+  function mapStateToProps(state) {
     return {
       filteredDogs: state.filteredDogs,
       temperaments: state.temperaments

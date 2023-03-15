@@ -1,0 +1,32 @@
+.form {
+    border-radius: 8px;
+    box-shadow: 0px 0px 8px rgb(97, 97, 97);
+    color: #0e1c2e;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    background-color: #ccc;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
+}
+
+.warning{
+    border-color: rgb(196, 0, 0);
+}
+
+.danger{
+    display: flex;
+    justify-content: center;
+    color: rgb(200, 0, 0);
+    font-size: 14px;
+    margin-top: -20px;
+}
+
+.label{
+    font-size: 20px;
+    margin-bottom: -10px;
+}

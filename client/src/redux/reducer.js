@@ -25,9 +25,9 @@ const reducer = (state = initialState, action) => {
       };
     case FILTER_BY_TEMPERAMENTS:
       state.filteredDogs = state.allDogs;
-      const filteredArray = state.filteredDogs.filter((e) =>
-        // e.temperament.includes(action.payload)
-        e.temperament = action.payload
+      const filteredArray = action.payload === 'All' ? state.allDogs : state.filteredDogs.filter((e) =>{
+        return e.temperament?.includes(action.payload)
+      }
       );
       return {
         ...state,
@@ -36,7 +36,7 @@ const reducer = (state = initialState, action) => {
     case FILTER_BY_RACE:
       state.filteredDogs = state.allDogs;
       const filteredRaceArray = state.filteredDogs.filter((e) =>
-        e.temperament.includes(action.payload)
+        e.name.toLowerCase().includes(action.payload)
       );
       return {
         ...state,

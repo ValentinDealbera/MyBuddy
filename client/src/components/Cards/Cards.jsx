@@ -9,12 +9,12 @@ import {
   getTemperaments,
 } from "../../redux/actions";
 import styles from "./Cards.module.css";
-import axios from "axios";
 
 const Cards = (props) => {
   const dispatch = useDispatch();
   const filterHandler = (event) => {
-
+    dispatch(emptyFilter())
+    dispatch(filterByTemperaments(event.target.value))
   } 
   const orderHandler = (event) => {
     dispatch(emptyFilter())

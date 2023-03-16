@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { connect } from "react-redux";
 import { validate } from "./validation";
@@ -5,6 +6,7 @@ import style from "./Form.module.css";
 import axios from 'axios'
 
 const Form = (props) => {
+  const navigate = useNavigate()
   const [form, setForm] = useState({
     name: "",
     image: "",
@@ -53,9 +55,21 @@ const Form = (props) => {
         image: image,
         height: `${heightMin} - ${heightMax}`,
         weight: `${weightMin} - ${weightMax}`,
-        life_span: `${life_spanMin} - ${life_spanMax}`,
+        life_span: `${life_spanMin} - ${life_spanMax} years`,
         temperament: temperament.split(',').map(e=>Number(e))
     }).then(response => response.data).then(data=> console.log(data)).catch(error=> console.log(error.message))
+    setForm({
+      name: "",
+      image: "",
+      heightMin: 0,
+      heightMax: 0,
+      weightMin: 0,
+      weightMax: 0,
+      life_spanMin: 0,
+      life_spanMax: 0,
+      temperament: "",
+    })
+    setTimeout(navigate('/home'),3000)
   };
   return (
     <form className={style.form} onSubmit={submitHandler}>

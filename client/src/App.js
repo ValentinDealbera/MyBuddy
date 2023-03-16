@@ -7,22 +7,13 @@ import About from "./components/About/About"
 import Cards from "./components/Cards/Cards"
 import Detail from "./components/Detail/Detail"
 import { useEffect } from "react";
-import {
-  getAllDogs,
-  getTemperaments,
-} from "./redux/actions";
-import { useDispatch } from "react-redux";
 
 function App() {
   const navigate = useNavigate()
   const location = useLocation()
-  const dispatch = useDispatch();
   
   useEffect(()=>{
     location.pathname==='/' ? navigate('/landing') : navigate(location.pathname)
-    dispatch(getTemperaments())
-    dispatch(getAllDogs())
-      // eslint-disable-next-line react-hooks/exhaustive-deps
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
@@ -43,7 +34,7 @@ function App() {
         <Route path='/create' element={<Form />} />
         <Route path='/about' element={<About />} />
         <Route path='/home' element={<Cards />} />
-        <Route path='/detail/:detailId' element={<Detail />} />
+        <Route path='/detail/:idRaza' element={<Detail />} />
       </Routes>
     </div>
   )

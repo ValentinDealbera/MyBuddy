@@ -108,7 +108,7 @@ router.get('/dogs/:idRaza', async (req, res)=>{
             height: e.height,
             weight: e.weight,
             life_span: e.life_span,
-            temperament: dataBaseDogs[0].temperaments.map(e=>e.dataValues.name).join(', ')
+            temperament: dataBaseDogs[0].temperaments.map(e=>e.dataValues.name)
         }})
         const formatedDogs = dogsApi.data.map(e=>{
             return {
@@ -118,7 +118,7 @@ router.get('/dogs/:idRaza', async (req, res)=>{
                 weight: e.weight.metric,
                 height: e.height.metric,
                 life_span: e.life_span,
-                temperament: e.temperament
+                temperament: (e.temperament+'').split(',')
             }
         })
         const allDogs = [...formatedDogs, ...formatedDatabaseDogs]

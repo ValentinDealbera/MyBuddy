@@ -1,16 +1,26 @@
 import Card from "../Card/Card";
 import { connect, useDispatch } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   emptyFilter,
   filterByTemperaments,
   orderDogs,
 } from "../../redux/actions";
 import styles from "./Cards.module.css";
+import {
+  getAllDogs,
+  getTemperaments,
+} from "../../redux/actions";
 
 const Cards = (props) => {
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(getTemperaments())
+    dispatch(getAllDogs())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
   const [currentPage, setCurrentPage] = useState(1);
-  const [cardsPerPage, serCardsPerPage] = useState(8);
+  const [cardsPerPage] = useState(8);
   const indexOfLastCard = currentPage * cardsPerPage;
   const indexOfFirstCard = indexOfLastCard - cardsPerPage;
   const mapDogs = () => {
@@ -66,7 +76,6 @@ const Cards = (props) => {
       </button>
     );
   });
-  const dispatch = useDispatch();
   const filterHandler = (event) => {
     dispatch(emptyFilter());
     dispatch(filterByTemperaments(event.target.value));

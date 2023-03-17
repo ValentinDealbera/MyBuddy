@@ -5,12 +5,10 @@ import {
   emptyFilter,
   filterByTemperaments,
   orderDogs,
-} from "../../redux/actions";
-import styles from "./Cards.module.css";
-import {
   getAllDogs,
   getTemperaments,
 } from "../../redux/actions";
+import styles from "./Cards.module.css";
 
 const Cards = (props) => {
   const dispatch = useDispatch();

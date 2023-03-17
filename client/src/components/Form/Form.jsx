@@ -1,11 +1,23 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { connect } from "react-redux";
+import { useState, useEffect } from "react";
+import { connect, useDispatch } from "react-redux";
 import { validate } from "./validation";
 import style from "./Form.module.css";
 import axios from 'axios'
+import {
+  getAllDogs,
+  emptyFilter
+} from "../../redux/actions";
 
 const Form = (props) => {
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    return ()=>{
+      dispatch(emptyFilter())
+      dispatch(getAllDogs())
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
   const navigate = useNavigate()
   const [form, setForm] = useState({
     name: "",
@@ -30,7 +42,7 @@ const Form = (props) => {
     life_spanMax: 0,
     temperament: "",
   });
-
+  
   const changeHandler = (event) => {
     setForm({
       ...form,
@@ -41,22 +53,22 @@ const Form = (props) => {
         ...form,
         [event.target.name]: event.target.value,
       })
-    );
-  };
-
+      );
+    };
+    
   const submitHandler = (event) => {
     event.preventDefault()
     const {name, image, heightMin, heightMax, weightMin, weightMax, life_spanMin, life_spanMax, temperament} = form
     if (!name || !image || !heightMin || !heightMax || !weightMin || !weightMax || !life_spanMin || !life_spanMax || !temperament){
-        return window.alert('Datos incompletos')
+      return window.alert('Datos incompletos')
     }
     axios.post("http://localhost:3001/dogs", {
-        name: name,
-        image: image,
-        height: `${heightMin} - ${heightMax}`,
-        weight: `${weightMin} - ${weightMax}`,
-        life_span: `${life_spanMin} - ${life_spanMax} years`,
-        temperament: temperament.split(',').map(e=>Number(e))
+      name: name,
+      image: image,
+      height: `${heightMin} - ${heightMax}`,
+      weight: `${weightMin} - ${weightMax}`,
+      life_span: `${life_spanMin} - ${life_spanMax} years`,
+      temperament: temperament.split(',').map(e=>Number(e))
     }).then(response => response.data).then(data=> console.log(data)).catch(error=> console.log(error.message))
     setForm({
       name: "",
@@ -69,7 +81,7 @@ const Form = (props) => {
       life_spanMax: 0,
       temperament: "",
     })
-    setTimeout(navigate('/home'),3000)
+      navigate("/home")
   };
   return (
     <form className={style.form} onSubmit={submitHandler}>

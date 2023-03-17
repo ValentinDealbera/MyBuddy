@@ -13,6 +13,7 @@ import styles from "./Cards.module.css";
 const Cards = (props) => {
   const dispatch = useDispatch();
   useEffect(()=>{
+    dispatch(emptyFilter())
     dispatch(getTemperaments())
     dispatch(getAllDogs())
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -1,6 +1,7 @@
 import { emptyFilter, filterByRace } from "../../redux/actions";
 import { useDispatch, connect } from "react-redux";
 import { useState } from "react";
+import { useEffect } from "react";
 const SearchBar = (props) => {
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
@@ -11,6 +12,11 @@ const SearchBar = (props) => {
   const inputHandler = (event) => {
     setSearch(event.target.value);
   };
+  useEffect(()=>{
+    dispatch(emptyFilter());
+    dispatch(filterByRace(search))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[search])
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       dispatch(emptyFilter());

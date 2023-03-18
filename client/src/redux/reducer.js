@@ -24,7 +24,7 @@ const reducer = (state = initialState, action) => {
         dogsToFilter: action.payload
       };
     case FILTER_BY_TEMPERAMENTS:
-      state.filteredDogs = state.allDogs;
+      state.filteredDogs = state.dogsToFilter;
       const filteredArray = action.payload === 'All' ? state.allDogs : state.filteredDogs.filter((e) =>{
         return e.temperament?.includes(action.payload)
       }
@@ -32,6 +32,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         filteredDogs: filteredArray,
+        dogsToFilter: filteredArray,
       };
     case FILTER_BY_RACE:
       state.filteredDogs = state.allDogs;
@@ -41,9 +42,10 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         filteredDogs: filteredRaceArray,
+        dogsToFilter: filteredRaceArray,
       };
     case ORDER_DOGS:
-      state.filteredDogs = state.allDogs;
+      state.filteredDogs = state.dogsToFilter;
       const sortedArray = action.payload === "ascendente"
       ? state.filteredDogs.sort((a, b) =>
       a.name.localeCompare(b.name))

@@ -21,28 +21,75 @@ const Cards = (props) => {
   },[])
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage] = useState(8);
+  const [filter, setFilter] = useState('All')
+  const [tempfilter, setTempFilter] = useState([])
   const indexOfLastCard = currentPage * cardsPerPage;
   const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+  let alldogs = props.filteredDogs
+  useEffect(()=>{
+    dispatch(filterByTemperaments('All'))
+    for (let i = 0; i < tempfilter.length; i++) {
+      dispatch(filterByTemperaments(tempfilter[i]))
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[tempfilter])
   const mapDogs = () => {
-    return props.filteredDogs.map((dog) => {
-      return (
-        <Card
-          key={dog.id}
-          name={dog.name}
-          id={dog.id}
-          image={dog.image}
-          weight={dog.weight}
-          height={dog.height}
-          temperament={dog.temperament}
-        />
-      );
-    });
+    if (filter === 'All') {
+      alldogs = props.filteredDogs
+      return alldogs.map((dog) => {
+        return (
+          <Card
+            key={dog.id}
+            name={dog.name}
+            id={dog.id}
+            image={dog.image}
+            weight={dog.weight}
+            height={dog.height}
+            temperament={dog.temperament}
+          />
+        );
+      });
+    }
+    if (filter === 'Created') {
+      const dogsToShow = alldogs.filter(e=>typeof e.id === 'string')
+      alldogs = dogsToShow
+      return dogsToShow.map((dog) => {
+        return (
+          <Card
+            key={dog.id}
+            name={dog.name}
+            id={dog.id}
+            image={dog.image}
+            weight={dog.weight}
+            height={dog.height}
+            temperament={dog.temperament}
+          />
+        );
+      });
+    }
+    if (filter === 'Default') {
+      const dogsToShow = alldogs.filter(e=>typeof e.id === 'number')
+      alldogs = dogsToShow
+      return dogsToShow.map((dog) => {
+        return (
+          <Card
+            key={dog.id}
+            name={dog.name}
+            id={dog.id}
+            image={dog.image}
+            weight={dog.weight}
+            height={dog.height}
+            temperament={dog.temperament}
+          />
+        );
+      });
+    }
   };
   const currentCards = mapDogs().slice(indexOfFirstCard, indexOfLastCard);
 
   const pageNumbers = ['<'];
-  for ( let i = 1; i <= Math.ceil(props.filteredDogs.length / cardsPerPage); i++ ) {
-    if (i === Math.ceil(props.filteredDogs.length / cardsPerPage)) {
+  for ( let i = 1; i <= Math.ceil(alldogs.length / cardsPerPage); i++ ) {
+    if (i === Math.ceil(alldogs.length / cardsPerPage)) {
       pageNumbers.push(i);
       pageNumbers.push('>')
       break;
@@ -77,8 +124,14 @@ const Cards = (props) => {
     );
   });
   const filterHandler = (event) => {
+    if (event.target.value === 'All'){
+      setTempFilter([]);
+      dispatch(emptyFilter());
+      dispatch(filterByTemperaments(event.target.value))
+      return
+    }
+    setTempFilter([...tempfilter, event.target.value]);
     dispatch(emptyFilter());
-    dispatch(filterByTemperaments(event.target.value));
   };
   const orderHandler = (event) => {
     dispatch(emptyFilter());
@@ -93,6 +146,12 @@ const Cards = (props) => {
       );
     });
   };
+  const generalFilter = (event) => {
+    setFilter(event.target.value)
+  }
+  const eliminateTemp = (event) => {
+    setTempFilter(tempfilter.filter(e=>e !== event.target.value))
+  }
   return (
     <div>
       <div>
@@ -100,9 +159,22 @@ const Cards = (props) => {
         <option value="All">All</option>
         {mapTemperaments()}
       </select>
+      <h5>{tempfilter.map((e,i)=>{
+        return (
+          <div key={i}>
+            <span>{e}</span>
+            <button value={e} onClick={eliminateTemp} >x</button>
+          </div>
+        )
+      })}</h5>
       <select onChange={orderHandler}>
         <option value="ascendente">A - Z</option>
         <option value="descendente">Z - A</option>
+      </select>
+      <select onChange={generalFilter}>
+        <option value="All">All</option>
+        <option value="Created">Created</option>
+        <option value="Default">Default</option>
       </select>
       </div>
       <div className={styles.divGeneral}>{currentCards}</div>

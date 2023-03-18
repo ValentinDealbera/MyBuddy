@@ -5,7 +5,6 @@ import { validate } from "./validation";
 import style from "./Form.module.css";
 import axios from 'axios'
 import {
-  getAllDogs,
   emptyFilter
 } from "../../redux/actions";
 
@@ -14,11 +13,11 @@ const Form = (props) => {
   useEffect(()=>{
     return ()=>{
       dispatch(emptyFilter())
-      dispatch(getAllDogs())
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   const navigate = useNavigate()
+  const [temperament, setTemperament] = useState([])
   const [form, setForm] = useState({
     name: "",
     image: "",
@@ -28,7 +27,6 @@ const Form = (props) => {
     weightMax: 0,
     life_spanMin: 0,
     life_spanMax: 0,
-    temperament: "",
   });
 
   const [errors, setErrors] = useState({
@@ -40,7 +38,6 @@ const Form = (props) => {
     weightMax: 0,
     life_spanMin: 0,
     life_spanMax: 0,
-    temperament: "",
   });
   
   const changeHandler = (event) => {
@@ -58,8 +55,8 @@ const Form = (props) => {
     
   const submitHandler = (event) => {
     event.preventDefault()
-    const {name, image, heightMin, heightMax, weightMin, weightMax, life_spanMin, life_spanMax, temperament} = form
-    if (!name || !image || !heightMin || !heightMax || !weightMin || !weightMax || !life_spanMin || !life_spanMax || !temperament){
+    const {name, image, heightMin, heightMax, weightMin, weightMax, life_spanMin, life_spanMax} = form
+    if (!name || !image || !heightMin || !heightMax || !weightMin || !weightMax || !life_spanMin || !life_spanMax){
       return window.alert('Datos incompletos')
     }
     axios.post("http://localhost:3001/dogs", {
@@ -68,7 +65,7 @@ const Form = (props) => {
       height: `${heightMin} - ${heightMax}`,
       weight: `${weightMin} - ${weightMax}`,
       life_span: `${life_spanMin} - ${life_spanMax} years`,
-      temperament: temperament.split(',').map(e=>Number(e))
+      temperament: temperament
     }).then(response => response.data).then(data=> console.log(data)).catch(error=> console.log(error.message))
     setForm({
       name: "",
@@ -81,10 +78,27 @@ const Form = (props) => {
       life_spanMax: 0,
       temperament: "",
     })
+      setTemperament([])
       dispatch(emptyFilter())
       navigate("/home")
   };
+  const mapTemperaments = () => {
+    return props.temperaments.map((e, i) => {
+      return (
+        <option key={i} value={e.name}>
+          {e.name}
+        </option>
+      );
+    });
+  };
+  const tempHandler = (event) => {
+    setTemperament([...temperament, event.target.value])
+  }
+  const eliminateTemp = (event) => {
+    setTemperament(temperament.filter(e=> e !== event.target.value))
+  }
   return (
+    <div>
     <form className={style.form} onSubmit={submitHandler}>
       <label className={style.label}>Name</label>
       <input className={errors.name && style.warning} onChange={changeHandler} type="text" value={form.name} name="name" />
@@ -110,11 +124,19 @@ const Form = (props) => {
       <label className={style.label}>life_spanMax</label>
       <input className={errors.life_spanMax && style.warning} onChange={changeHandler} type="number" value={form.life_spanMax} name="life_spanMax" />
       <p className={style.danger}>{errors.life_spanMax}</p>
-      <label className={style.label}>temperament</label>
-      <input className={errors.temperament && style.warning} onChange={changeHandler} type="text" value={form.temperament} name="temperament" />
-      <p className={style.danger}>{errors.temperament}</p>
+      <select defaultValue="Select Temperament" onChange={tempHandler}>
+        {mapTemperaments()}
+      </select>
       <button>Submit</button>
     </form>
+    <ul>{temperament.map(e=>{
+    return (<div>
+      <p key={e}>{e}</p>
+      <button value={e} onClick={eliminateTemp}>x</button>
+      </div>
+    )
+  })}</ul>
+    </div>
   );
 };
 

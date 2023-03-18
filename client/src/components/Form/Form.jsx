@@ -81,6 +81,7 @@ const Form = (props) => {
       life_spanMax: 0,
       temperament: "",
     })
+      dispatch(emptyFilter())
       navigate("/home")
   };
   return (

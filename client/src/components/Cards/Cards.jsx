@@ -17,6 +17,7 @@ const Cards = (props) => {
     dispatch(getAllDogs())
     dispatch(emptyFilter())
     dispatch(filterByTemperaments("All"));
+    return () => {dispatch(emptyFilter())}
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   const [currentPage, setCurrentPage] = useState(1);
@@ -27,6 +28,7 @@ const Cards = (props) => {
   const indexOfFirstCard = indexOfLastCard - cardsPerPage;
   let alldogs = props.filteredDogs
   useEffect(()=>{
+    setCurrentPage(1)
     dispatch(filterByTemperaments('All'))
     for (let i = 0; i < tempfilter.length; i++) {
       dispatch(filterByTemperaments(tempfilter[i]))
@@ -124,39 +126,36 @@ const Cards = (props) => {
     );
   });
   const filterHandler = (event) => {
-    if (event.target.value === 'All'){
-      setTempFilter([]);
-      dispatch(emptyFilter());
-      dispatch(filterByTemperaments(event.target.value))
-      return
-    }
+    setCurrentPage(1)
     setTempFilter([...tempfilter, event.target.value]);
-    dispatch(emptyFilter());
+    event.target.value = 'All'
   };
   const orderHandler = (event) => {
     dispatch(emptyFilter());
     dispatch(orderDogs(event.target.value));
   };
   const mapTemperaments = () => {
-    return props.temperaments.map((e, i) => {
+    return props.temperaments.filter(e=> !tempfilter.includes(e.name)).map((e, i) => {
       return (
         <option key={i} value={e.name}>
           {e.name}
         </option>
       );
-    });
+    })
   };
   const generalFilter = (event) => {
+    setCurrentPage(1)
     setFilter(event.target.value)
   }
   const eliminateTemp = (event) => {
+    setCurrentPage(1)
     setTempFilter(tempfilter.filter(e=>e !== event.target.value))
   }
   return (
     <div>
       <div>
       <select defaultValue="All" onChange={filterHandler}>
-        <option value="All">All</option>
+        <option disabled value="All">Select a temperament</option>
         {mapTemperaments()}
       </select>
       <h5>{tempfilter.map((e,i)=>{

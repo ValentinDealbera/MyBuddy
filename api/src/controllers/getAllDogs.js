@@ -11,7 +11,7 @@ const getAllDogs = async (req, res)=>{
                 attributes: []
             }
         }})
-        const formatedDatabaseDogs = dataBaseDogs.map(e=>{
+        const formatedDatabaseDogs = dataBaseDogs.map((e,i)=>{
             return {
             id: e.id,    
             name: e.name,
@@ -19,7 +19,7 @@ const getAllDogs = async (req, res)=>{
             height: e.height,
             weight: e.weight,
             life_span: e.life_span,
-            temperament: dataBaseDogs[0].temperaments.map(e=>e.dataValues.name).join(', ')
+            temperament: dataBaseDogs[i].temperaments.map(e=>e.dataValues.name).join(', ')
         }})
         const formatedDogs = dogsApi.data.map(e=>{
             return {

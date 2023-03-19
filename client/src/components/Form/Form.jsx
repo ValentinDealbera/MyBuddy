@@ -11,6 +11,7 @@ import {
 const Form = (props) => {
   const dispatch = useDispatch()
   useEffect(()=>{
+    setTemperament([])
     return ()=>{
       dispatch(emptyFilter())
     }
@@ -83,7 +84,7 @@ const Form = (props) => {
       navigate("/home")
   };
   const mapTemperaments = () => {
-    return props.temperaments.map((e, i) => {
+    return props.temperaments.filter(e=> !temperament.includes(e.name)).map((e, i) => {
       return (
         <option key={i} value={e.name}>
           {e.name}
@@ -93,6 +94,7 @@ const Form = (props) => {
   };
   const tempHandler = (event) => {
     setTemperament([...temperament, event.target.value])
+    event.target.value = 'Default'
   }
   const eliminateTemp = (event) => {
     setTemperament(temperament.filter(e=> e !== event.target.value))
@@ -125,13 +127,14 @@ const Form = (props) => {
       <input className={errors.life_spanMax && style.warning} onChange={changeHandler} type="number" value={form.life_spanMax} name="life_spanMax" />
       <p className={style.danger}>{errors.life_spanMax}</p>
       <select defaultValue="Select Temperament" onChange={tempHandler}>
+        <option disabled value="Default">Select a temperament</option>
         {mapTemperaments()}
       </select>
       <button>Submit</button>
     </form>
     <ul>{temperament.map(e=>{
-    return (<div>
-      <p key={e}>{e}</p>
+    return (<div key={e}>
+      <p >{e}</p>
       <button value={e} onClick={eliminateTemp}>x</button>
       </div>
     )

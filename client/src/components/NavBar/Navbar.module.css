@@ -1,1 +1,42 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
+
+.banner{
+  background-color: #A9852B;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12vh;
+  width: 100vw;
+  margin-left: -25px;
+  margin-top: -25px;
+  position: relative;
+  font-family: "DM Sans", sans-serif;
+}
+ .image{
+  position: absolute;
+  width: 7%;
+  left: 0px;
+  top: 7px;
+ }
+.navbar{
+    background-color: #C19930;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 10vh;
+  width: 100vw;
+  margin-left: -25px;
+  position: relative;
+}
+
+.navbarButton{
+    font-family: "DM Sans", sans-serif;
+    font-size:180%;
+    background: none;
+    border: none;
+}
+
+.navbarButton:hover{
+    text-decoration-line: underline;
+    text-shadow: 1px 1px 1px 1px rgb(255, 255, 255);
+}

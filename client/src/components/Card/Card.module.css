@@ -1,29 +1,67 @@
-.styleCard {
-    border-radius: 8px;
-    box-shadow: 0px 0px 8px rgb(97, 97, 97);
-    color: #0e1c2e;
-    margin: auto;
-    background-color: #ccc;
-    width: 250px;
-    height: 350px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    transition: all .2s ease-in-out;
-  }
-  
-.styleCard:hover {
-    box-shadow: 0px 0px 8px rgb(156, 156, 156);
-    transform: translateY(-5px)
-  }
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
 
-.img {
-    width: 250px;
-    height: 150px;
-    border-radius: 5px
+.card{
+  background-color: #B29344;
+  padding: 15px;
+  border-radius: 10px;
+  position: relative;
 }
 
-.temperament {
-    font-size: medium;
-    padding: 5px;
+
+.img{
+    width:  250px;
+    height: 250px;
+    object-fit: cover;
+  border-radius: 10px;
+}
+
+.name{
+  position: absolute;
+  top: -3px;
+  left: 25.3px;
+  width: 250px
+}
+
+.nameString{
+  font-family: "DM Sans", sans-serif;
+  background: linear-gradient(#b29344a6, #b2934400);
+  border-radius: 10px;
+  font-size: large;
+  text-shadow: 1px 1px #b29344;
+}
+
+.weight{
+  position: absolute;
+  top: 223px;
+  left: 25.3px;
+  width: 250px
+}
+
+.weightNumber{
+  font-family: "DM Sans", sans-serif;
+  background: linear-gradient(#b2934400, #b29344a6);
+  border-radius: 10px;
+  font-size: large;
+  text-shadow: 1px 1px white;
+}
+
+.temp{
+  padding: 20px;
+  gap: 8%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-gap: 15px;
+  align-items: stretch;
+}
+
+.tempButtons{
+  font-family: "DM Sans", sans-serif;
+  color: white;
+  background-color: #7b6413;
+  border: none;
+  border-radius: 10px;
+  padding-bottom: 5px;
+  padding-top:    5px;
+  padding-left:   10px;
+  padding-right:  10px;
 }

@@ -7,33 +7,34 @@ import axios from "axios"
 
 const Detail = () => {
     const {idRaza} = useParams() 
-    const [character, setCharacter] = useState({})
+    const [dog, setDog] = useState({})
     useEffect(()=>{
         axios.get('http://localhost:3001/dogs/' + idRaza)
         .then(response=>response.data)
         .then(data=>{
-            setCharacter(data[0])
-            console.log(character);
+          setDog(data[0])
+            console.log(dog);
         })
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
     
     return (
-      <div>
-        <div className={styles.detail}>
-          <div className={styles.text}>
-            <h1>{character?.name}</h1>
-            <h3>Height :{character?.height} cm</h3>
-            <h3>Weight: {character?.weight} kg</h3>
-            <h3>Life span: {character?.life_span}</h3>
-            <h4>temperament: {character?.temperament?.map(e=><li key={e}>{e}</li>)}</h4>
+        <div className={styles.card}>
+          <div className={styles.textbox}>
+            <h1 className={styles.name}>{dog?.name}</h1>
+            <h3 className={styles.height}>Height: {dog?.height} cm</h3>
+            <h3 className={styles.weight}>Weight: {dog?.weight} kg</h3>
+            <h3 className={styles.lifeSpan}>Life span: {dog?.life_span}</h3>
+            <h2 className={styles.temp}>temperament</h2>
+            <div className={dog?.temperament?.length <= 4 ? styles.tempGridFew : styles.tempGridMuch}>
+            {dog?.temperament?.map(e=><button className={styles.tempButton} key={e}>{e}</button>)}
+            </div >
             <Link to={'/home'}>
             <button className={styles.button}>Home</button>
             </Link>
           </div>
-            <img className={styles.img} src={character?.image} alt="" />
+            <img className={styles.img} src={dog?.image} alt="" />
         </div>
-      </div>
     )
 }
 

@@ -229,6 +229,7 @@ const Cards = (props) => {
             id="alphabetically"
             name="fav_language"
             value="alphabetically"
+            defaultChecked
           />
           <label>Alphabetically</label>
           <input onClick={filterByHandler} type="radio" id="weight" name="fav_language" value="weight" />

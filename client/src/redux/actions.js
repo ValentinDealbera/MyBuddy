@@ -5,6 +5,14 @@ const FILTER_BY_RACE = 'FILTER_BY_RACE'
 const ORDER_DOGS = 'ORDER_DOGS'
 const EMPTY_FILTER = 'EMPTY_FILTER'
 const GET_TEMPERAMENTS = 'GET_TEMPERAMENTS'
+const ORDER_BY_WEIGHT = 'ORDER_BY_WEIGHT'
+
+const orderByWeight = (id) => {
+    return {
+        type: ORDER_BY_WEIGHT,
+        payload: id
+    }
+}
 
 const getAllDogs = () => {
     return async function (dispatch){
@@ -62,10 +70,12 @@ export {
     ORDER_DOGS,
     EMPTY_FILTER,
     GET_TEMPERAMENTS,
+    ORDER_BY_WEIGHT,
     getAllDogs,
     filterByTemperaments,
     filterByRace,
     orderDogs,
     emptyFilter,
-    getTemperaments
+    getTemperaments,
+    orderByWeight
 }

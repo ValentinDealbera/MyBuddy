@@ -1,20 +1,23 @@
-import SearchBar from "../SearchBar/SearchBar"
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 const Navbar = () => {
-    return (
-        <nav>
-            <Link to={'/home'}>
-            <button>Home</button>
-            </Link>
-            <Link to={'/about'}>
-            <button>About</button>
-            </Link>
-            <Link to={'/create'}>
-            <button>Create</button>
-            </Link>
-            <SearchBar/>
-        </nav>
-    )
-}
+  return (
+    <div>
+        <div>
+        <h1>MyBuddy</h1>
+        </div>
+      <nav>
+        <Link to={"/home"}>
+          <button>Home</button>
+        </Link>
+        <Link to={"/about"}>
+          <button>About</button>
+        </Link>
+        <Link to={"/create"}>
+          <button>Create</button>
+        </Link>
+      </nav>
+    </div>
+  );
+};
 
-export default Navbar
+export default Navbar;

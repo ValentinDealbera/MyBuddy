@@ -5,10 +5,6 @@ import { useEffect } from "react";
 const SearchBar = (props) => {
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
-  const searchHandler = () => {
-    dispatch(emptyFilter());
-    dispatch(filterByRace(search));
-  };
   const inputHandler = (event) => {
     setSearch(event.target.value);
   };
@@ -32,7 +28,6 @@ const SearchBar = (props) => {
         type="text"
         onChange={inputHandler}
       />
-      <button onClick={searchHandler}>Search</button>
     </div>
   );
 };

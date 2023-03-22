@@ -26,7 +26,7 @@ const Detail = () => {
             <h3 className={styles.weight}>Weight: {dog?.weight} kg</h3>
             <h3 className={styles.lifeSpan}>Life span: {dog?.life_span}</h3>
             <h2 className={styles.temp}>temperament</h2>
-            <div className={dog?.temperament?.length <= 4 ? styles.tempGridFew : styles.tempGridMuch}>
+            <div className={dog?.temperament?.length <= 3 ? styles.tempGridFew : styles.tempGridMuch}>
             {dog?.temperament?.map(e=><button className={styles.tempButton} key={e}>{e}</button>)}
             </div >
             <Link to={'/home'}>

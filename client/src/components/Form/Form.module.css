@@ -1,17 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
 .form {
-    border-radius: 8px;
-    box-shadow: 0px 0px 8px rgb(97, 97, 97);
-    color: #0e1c2e;
+    margin-top: 1.6%;
+    background: linear-gradient(#A9852B , #C19930);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 20px;
+    gap: 35px;
+    width: 52%;
+    margin-bottom: -20px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 5%;
-    background-color: #ccc;
-    width: 200px;
+}
+
+.form2{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 8%;
     padding: 20px;
-    gap: 20px;
+}
+
+input[type=number]{
+    width: 15%;
+}
+.nameForm{
+    display: flex;
+
+}
+
+.imageForm{
+    display: flex;
+}
+
+.heightForm{
+    display: flex;
+}
+
+.weightForm{
+    display: flex;
+}
+
+.lifeSpanForm{
+    display: flex;
+}
+
+.tempForm{
+    display: flex;
+    justify-content: center;
+}
+
+.submit{
+    display: flex;
+    justify-content: center;
+}
+
+.submitButton{
+  font-family: "DM Sans", sans-serif;
+  font-size: large;
+  color: white;
+  background-color: #7b6413;
+  border: none;
+  border-radius: 10px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: -2%;
 }
 
 .warning{
@@ -19,6 +74,7 @@
 }
 
 .danger{
+    position: absolute;
     display: flex;
     justify-content: center;
     color: rgb(200, 0, 0);
@@ -29,4 +85,103 @@
 .label{
     font-size: 20px;
     margin-bottom: -10px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+/* --------------------------------------------------------------------------------------------------- */
+
+.preview{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.previewText{
+    position: absolute;
+    top: -430%;
+    left: 35%;
+    color: rgba(0, 0, 0, 0.425);
+}
+
+.card{
+  background-color: #B29344;
+  padding: 15px;
+  border-radius: 10px;
+  position: relative;
+}
+
+
+.img{
+    width:  250px;
+    height: 250px;
+    object-fit: cover;
+  border-radius: 10px;
+}
+
+.name{
+  position: absolute;
+  top: -3px;
+  left: 25.3px;
+  width: 250px
+}
+
+.nameString{
+  font-family: "DM Sans", sans-serif;
+  background: linear-gradient(#b29344a6, #b2934400);
+  border-radius: 10px;
+  font-size: large;
+  text-shadow: 1px 1px #b29344;
+}
+
+.weight{
+  position: absolute;
+  top: 223px;
+  left: 25.3px;
+  width: 250px
+}
+
+.weightNumber{
+  font-family: "DM Sans", sans-serif;
+  background: linear-gradient(#b2934400, #b29344a6);
+  border-radius: 10px;
+  font-size: large;
+  text-shadow: 1px 1px white;
+  position: relative;
+}
+
+.temp{
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  gap: 8%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  grid-gap: 15px;
+  align-items: stretch;
+}
+
+.tempButtons{
+  font-family: "DM Sans", sans-serif;
+  color: white;
+  background-color: #7b6413;
+  border: none;
+  border-radius: 10px;
+  padding-bottom: 5px;
+  padding-top:    5px;
+  padding-left:   10px;
+  padding-right:  10px;
+}
+
+.tempButtons:hover{
+    background-color: #645210;
+  }
+  
+
+.tempAdvice{
+    position: absolute;
+    color: rgba(255, 255, 255, 0.5);
+    width: 120%;
+    top: 45%;
+    left: -14%
 }

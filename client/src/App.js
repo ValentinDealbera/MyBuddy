@@ -7,12 +7,16 @@ import About from "./components/About/About"
 import Cards from "./components/Cards/Cards"
 import Detail from "./components/Detail/Detail"
 import { useEffect } from "react";
+import { getTemperaments } from "./redux/actions";
+import { useDispatch } from "react-redux";
 
 function App() {
+  const dispatch = useDispatch();
   const navigate = useNavigate()
   const location = useLocation()
   
   useEffect(()=>{
+    dispatch(getTemperaments());
     location.pathname==='/' ? navigate('/landing') : navigate(location.pathname)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])

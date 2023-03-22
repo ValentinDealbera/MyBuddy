@@ -6,7 +6,6 @@ import {
   filterByTemperaments,
   orderDogs,
   getAllDogs,
-  getTemperaments,
   orderByWeight,
 } from "../../redux/actions";
 import styles from "./Cards.module.css";
@@ -17,7 +16,7 @@ const Cards = (props) => {
   const [filterBy, setFilterBy] = useState('')
   const [dropdown, setDropdown] = useState(false);
   useEffect(() => {
-    dispatch(getTemperaments());
+    dispatch(emptyFilter());
     dispatch(getAllDogs());
     return () => {
       dispatch(emptyFilter());

@@ -2,10 +2,10 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import { validate } from "./validation";
-import style from "./Form.module.css";
+import styles from "./Form.module.css";
 import axios from 'axios'
 import {
-  emptyFilter
+  emptyFilter, getAllDogs
 } from "../../redux/actions";
 
 const Form = (props) => {
@@ -14,10 +14,17 @@ const Form = (props) => {
     setTemperament([])
     return ()=>{
       dispatch(emptyFilter())
+      dispatch(getAllDogs())
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   const navigate = useNavigate()
+  const [preview, setPreview] = useState({
+    name: "",
+    image: "",
+    weightMin: 0,
+    weightMax: 0,
+  });
   const [temperament, setTemperament] = useState([])
   const [form, setForm] = useState({
     name: "",
@@ -33,16 +40,20 @@ const Form = (props) => {
   const [errors, setErrors] = useState({
     name: "",
     image: "",
-    heightMin: 0,
-    heightMax: 0,
-    weightMin: 0,
-    weightMax: 0,
-    life_spanMin: 0,
-    life_spanMax: 0,
+    heightMin: null,
+    heightMax: null,
+    weightMin: null,
+    weightMax: null,
+    life_spanMin: null,
+    life_spanMax: null,
   });
   
   const changeHandler = (event) => {
     setForm({
+      ...form,
+      [event.target.name]: event.target.value,
+    });
+    setPreview({
       ...form,
       [event.target.name]: event.target.value,
     });
@@ -57,7 +68,7 @@ const Form = (props) => {
   const submitHandler = (event) => {
     event.preventDefault()
     const {name, image, heightMin, heightMax, weightMin, weightMax, life_spanMin, life_spanMax} = form
-    if (!name || !image || !heightMin || !heightMax || !weightMin || !weightMax || !life_spanMin || !life_spanMax){
+    if (!name || !image || !heightMin || !heightMax || !weightMin || !weightMax || !life_spanMin || !life_spanMax || temperament.length < 1){
       return window.alert('Datos incompletos')
     }
     axios.post("http://localhost:3001/dogs", {
@@ -100,45 +111,75 @@ const Form = (props) => {
     setTemperament(temperament.filter(e=> e !== event.target.value))
   }
   return (
-    <div>
-    <form className={style.form} onSubmit={submitHandler}>
-      <label className={style.label}>Name</label>
-      <input className={errors.name && style.warning} onChange={changeHandler} type="text" value={form.name} name="name" />
-      <p className={style.danger}>{errors.name}</p>
-      <label className={style.label}>Image</label>
-      <input className={errors.image && style.warning} onChange={changeHandler} type="text" value={form.image} name="image" />
-      <p className={style.danger}>{errors.image}</p>
-      <label className={style.label}>heightMin</label>
-      <input className={errors.heightMin && style.warning} onChange={changeHandler} type="number" value={form.heightMin} name="heightMin" />
-      <p className={style.danger}>{errors.heightMin}</p>
-      <label className={style.label}>heightMax</label>
-      <input className={errors.heightMax && style.warning} onChange={changeHandler} type="number" value={form.heightMax} name="heightMax" />
-      <p className={style.danger}>{errors.heightMax}</p>
-      <label className={style.label}>weightMin</label>
-      <input className={errors.weightMin && style.warning} onChange={changeHandler} type="number" value={form.weightMin} name="weightMin" />
-      <p className={style.danger}>{errors.weightMin}</p>
-      <label className={style.label}>weightMax</label>
-      <input className={errors.weightMax && style.warning} onChange={changeHandler} type="number" value={form.weightMax} name="weightMax" />
-      <p className={style.danger}>{errors.weightMax}</p>
-      <label className={style.label}>life_spanMin</label>
-      <input className={errors.life_spanMin && style.warning} onChange={changeHandler} type="number" value={form.life_spanMin} name="life_spanMin" />
-      <p className={style.danger}>{errors.life_spanMin}</p>
-      <label className={style.label}>life_spanMax</label>
-      <input className={errors.life_spanMax && style.warning} onChange={changeHandler} type="number" value={form.life_spanMax} name="life_spanMax" />
-      <p className={style.danger}>{errors.life_spanMax}</p>
-      <select defaultValue="Select Temperament" onChange={tempHandler}>
+    <div className={styles.form}>
+    <form className={styles.form2} onSubmit={submitHandler}>
+      <div className={styles.nameForm}>
+      <label className={styles.label}>Name </label>
+      <input placeholder="Enter your buddy's name!" className={errors.name && styles.warning} onChange={changeHandler} type="text" value={form.name} name="name" />
+      <p className={styles.danger}>{errors.name}</p>
+      </div>
+      <div className={styles.imageForm}>
+      <label className={styles.label}>Image </label>
+      <input placeholder="Enter your buddy's image url!" className={errors.image && styles.warning} onChange={changeHandler} type="text" value={form.image} name="image" />
+      <p className={styles.danger}>{errors.image}</p>
+      </div>
+      <div className={styles.heightForm}>
+      <label className={styles.label}>height </label>
+      <input className={styles.input && errors.heightMin !== 0 && styles.warning} onChange={changeHandler} type="number" value={form.heightMin ? form.heightMin : ''} name="heightMin" />
+      <p className={styles.danger}>{errors.heightMin}</p>
+      <label className={styles.label}> - </label>
+      <input className={styles.input && errors.heightMax !== 0 && styles.warning} onChange={changeHandler} type="number" value={form.heightMax ? form.heightMax : ''} name="heightMax" />
+      <p className={styles.danger}>{errors.heightMax}</p>
+      <label className={styles.label}> Cm.</label>
+      </div>
+      <div className={styles.weightForm}>
+      <label className={styles.label}>weight </label>
+      <input className={styles.input && errors.weightMin !== 0 && styles.warning} onChange={changeHandler} type="number" value={form.weightMin ? form.weightMin : ''} name="weightMin" />
+      <p className={styles.danger}>{errors.weightMin}</p>
+      <label className={styles.label}> - </label>
+      <input className={styles.input && errors.weightMax !== 0 && styles.warning} onChange={changeHandler} type="number" value={form.weightMax ? form.weightMax : ''} name="weightMax" />
+      <p className={styles.danger}>{errors.weightMax}</p>
+      <label className={styles.label}> kg.</label>
+      </div>
+      <div className={styles.lifeSpanForm}>
+      <label className={styles.label}>life span </label>
+      <input className={styles.input && errors.life_spanMin !== 0 && styles.warning} onChange={changeHandler} type="number" value={form.life_spanMin ? form.life_spanMin : ''} name="life_spanMin" />
+      <p className={styles.danger}>{errors.life_spanMin}</p>
+      <label className={styles.label}> - </label>
+      <input className={styles.input && errors.life_spanMax !== 0 && styles.warning} onChange={changeHandler} type="number" value={form.life_spanMax ? form.life_spanMax : ''} name="life_spanMax" />
+      <p className={styles.danger}>{errors.life_spanMax}</p>
+      <label className={styles.label}> Years</label>
+      </div>
+      <div className={styles.tempForm}>
+      <select defaultValue="Default" onChange={tempHandler}>
         <option disabled value="Default">Select a temperament</option>
         {mapTemperaments()}
       </select>
-      <button>Submit</button>
-    </form>
-    <ul>{temperament.map(e=>{
-    return (<div key={e}>
-      <p >{e}</p>
-      <button value={e} onClick={eliminateTemp}>x</button>
       </div>
-    )
-  })}</ul>
+      <div className={styles.submit}>
+      <button className={styles.submitButton}>Submit</button>
+      </div>
+    </form>
+    <div className={styles.preview}>
+    <div className={styles.card}>
+        <div className={styles.image}>
+        <img className={styles.img} src={preview.image} alt={props.name} />
+        </div>
+        <div className={styles.name}>
+        <p className={styles.nameString}>{preview.name}</p>
+        </div>
+        <div className={styles.weight}>
+        <p className={styles.weightNumber}>{preview.weightMin} - {preview.weightMax} kg.</p>
+        <p className={styles.previewText}>Preview</p>
+        <div className={styles.tempAdvice}>
+        {temperament.length > 0 && <p>Click on a temperament to eliminate it</p>}
+        </div>
+        </div>
+        <div className={styles.temp}>
+        {temperament.map((e,i)=> <button className={styles.tempButtons} value={e} onClick={eliminateTemp} key={i}>{e}</button>)}
+        </div>
+      </div>
+      </div>
     </div>
   );
 };

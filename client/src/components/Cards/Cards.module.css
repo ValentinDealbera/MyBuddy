@@ -121,3 +121,124 @@ box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
 .searchBar {
     position: absolute;
 }
+
+@media only screen and (max-width: 768px) {
+  .divGeneral {
+    gap: 10%;
+    margin: -5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 1%;
+    align-items: stretch;
+    margin-bottom: 40%;
+    margin-top: 5%;
+  }
+  .filterBar {
+    background-color: #e0b23e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    width: 100vw;
+    margin-left: -25px;
+    position: relative;
+  }
+  
+  .tempBar {
+    top: 29%;
+    left: 0%;
+    position: relative;
+    border-radius: 10px;
+  }
+  
+  .tempButtonOn {
+    background-color: #a9852b;
+    border: none;
+    font-family: "DM Sans", sans-serif;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    font-size: large;
+    padding: 5px;
+    width: 150%;
+    margin-left: -25%;
+  }
+  
+  .tempButtonOff {
+      background-color: #a9852b;
+      border: none;
+      font-family: "DM Sans", sans-serif;
+      border-radius: 10px;
+      font-size: large;
+      padding: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  
+  .select {
+    position: absolute;
+    background-color: #a9852b;
+    width: 140%;
+    padding: 10px;
+    margin-left: -25%;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    z-index: 100;
+  }
+  
+  .selectBar {
+    width: 85%;
+  }
+  
+  .insideTempBar {
+      padding-top: 20px;
+      padding-bottom: 10px;
+    gap: 10%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+    grid-gap: 12px;
+    align-items: stretch;
+    width: 100%;
+  }
+  
+  .tempBarButton {
+      font-family: "DM Sans", sans-serif;
+    color: white;
+    background-color: #7b6413;
+    border: none;
+    border-radius: 10px;
+    padding-bottom: 2.5px;
+    padding-top:    2.5px;
+    padding-left:   5px;
+    padding-right:  5px;
+  }
+  
+  .tempBarButton:hover{
+      background-color: #645210;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+  }
+  
+  .filterCards {
+      position: absolute;
+      left: 10%;
+      top: 2%;
+      display: inline-block;
+      width: 80%;
+  }
+  
+  
+  .paginate {
+    font-family: "DM Sans", sans-serif;
+    color: white;
+    background-color: #7b6413;
+    border: none;
+    border-radius: 10px;
+    padding-bottom: 5px;
+    padding-top:    5px;
+    padding-left:   10px;
+    padding-right:  10px;
+  }
+  
+  .searchBar {
+      position: absolute;
+  }
+}

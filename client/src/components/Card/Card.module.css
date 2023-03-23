@@ -65,3 +65,84 @@
   padding-left:   10px;
   padding-right:  10px;
 }
+
+@media only screen and (max-width: 768px) {
+  .card{
+    background-color: #B29344;
+    border-radius: 10px;
+    display: flex;
+    position: relative;
+  }
+  
+  
+  .img{
+      width:  200px;
+      height: 200px;
+      object-fit: cover;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .name{
+    width: 230px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0%;
+  }
+  
+  .nameString{
+    font-family: "DM Sans", sans-serif;
+    background: linear-gradient(#b29344a6, #b2934400);
+    border-radius: 10px;
+    font-size: large;
+    text-shadow: 1px 1px #b29344;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .weight{
+    top: 75%;
+    left: 0%;
+    width: 230px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .weightNumber{
+    font-family: "DM Sans", sans-serif;
+    background: linear-gradient(#b2934400, #b29344a6);
+    border-radius: 10px;
+    font-size: large;
+    text-shadow: 1px 1px #b29344;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .temp{
+    padding: 20px;
+    display: grid;
+    grid-gap: 15px;
+    align-items: stretch;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .tempButtons{
+    font-family: "DM Sans", sans-serif;
+    color: white;
+    background-color: #7b6413;
+    border: none;
+    border-radius: 10px;
+    padding-bottom: 2.5px;
+    padding-top:    2.5px;
+    padding-left:   5px;
+    padding-right:  5px;
+  }
+}

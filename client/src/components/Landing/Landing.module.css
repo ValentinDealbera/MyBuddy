@@ -61,3 +61,58 @@
   background-color: #645210;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
+
+@media only screen and (max-width: 768px) {
+  @import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
+
+.back {
+  background-image: url(../../utils/wallpaperflare.com_wallpaper.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  top: 0px;
+  left: 0px;
+}
+
+.image {
+  background: url(../../utils/wallpaperflare.com_wallpaper.jpg) no-repeat center;
+  display: flex;
+  justify-content: center;
+  background-position: 30% 10px;
+}
+
+.textBox {
+  text-align: center;
+  background: linear-gradient(#b293447a, #b2934400);
+  padding-bottom: 20vh;
+  padding-top: 36.9%;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  font-family: "DM Sans", sans-serif;
+  text-shadow: 1px 1px black;
+  margin-right: -0.2%;
+}
+
+.text {
+  color: white;
+  margin-bottom: 15vh;
+}
+
+.button {
+  font-family: "DM Sans", sans-serif;
+  font-size: large;
+  margin-top: 5vh;
+  color: white;
+  background-color: #7b6413;
+  border: none;
+  border-radius: 10px;
+  padding-bottom: 8px;
+  padding-top:    8px;
+  padding-left:   15px;
+  padding-right:  15px;
+}
+
+.button:hover{
+  background-color: #645210;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+}

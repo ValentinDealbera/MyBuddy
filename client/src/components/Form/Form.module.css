@@ -1,61 +1,60 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
 .form {
-    margin-top: 1.6%;
-    background: linear-gradient(#A9852B , #C19930);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding: 20px;
-    gap: 35px;
-    width: 52%;
-    margin-bottom: -20px;
-    margin-left: auto;
-    margin-right: auto;
+  margin-top: 1.6%;
+  background: linear-gradient(#a9852b, #c19930);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px;
+  gap: 35px;
+  width: 52%;
+  margin-bottom: -20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.form2{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 8%;
-    padding: 20px;
+.form2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8%;
+  padding: 20px;
 }
 
-input[type=number]{
-    width: 15%;
+input[type="number"] {
+  width: 15%;
 }
-.nameForm{
-    display: flex;
-
-}
-
-.imageForm{
-    display: flex;
+.nameForm {
+  display: flex;
 }
 
-.heightForm{
-    display: flex;
+.imageForm {
+  display: flex;
 }
 
-.weightForm{
-    display: flex;
+.heightForm {
+  display: flex;
 }
 
-.lifeSpanForm{
-    display: flex;
+.weightForm {
+  display: flex;
 }
 
-.tempForm{
-    display: flex;
-    justify-content: center;
+.lifeSpanForm {
+  display: flex;
 }
 
-.submit{
-    display: flex;
-    justify-content: center;
+.tempForm {
+  display: flex;
+  justify-content: center;
 }
 
-.submitButton{
+.submit {
+  display: flex;
+  justify-content: center;
+}
+
+.submitButton {
   font-family: "DM Sans", sans-serif;
   font-size: large;
   color: white;
@@ -69,63 +68,62 @@ input[type=number]{
   margin-top: -2%;
 }
 
-.warning{
-    border-color: rgb(196, 0, 0);
+.warning {
+  border-color: rgb(196, 0, 0);
 }
 
-.danger{
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    color: rgb(200, 0, 0);
-    font-size: 14px;
-    margin-top: -20px;
+.danger {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  color: rgb(200, 0, 0);
+  font-size: 14px;
+  margin-top: -20px;
 }
 
-.label{
-    font-size: 20px;
-    margin-bottom: -10px;
-    margin-left: 8px;
-    margin-right: 8px;
+.label {
+  font-size: 20px;
+  margin-bottom: -10px;
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
 /* --------------------------------------------------------------------------------------------------- */
 
-.preview{
-    display: flex;
-    justify-content: flex-end;
+.preview {
+  display: flex;
+  justify-content: flex-end;
 }
 
-.previewText{
-    position: absolute;
-    top: -430%;
-    left: 35%;
-    color: rgba(0, 0, 0, 0.425);
+.previewText {
+  position: absolute;
+  top: -430%;
+  left: 35%;
+  color: rgba(0, 0, 0, 0.425);
 }
 
-.card{
-  background-color: #B29344;
+.card {
+  background-color: #b29344;
   padding: 15px;
   border-radius: 10px;
   position: relative;
 }
 
-
-.img{
-    width:  250px;
-    height: 250px;
-    object-fit: cover;
+.img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
   border-radius: 10px;
 }
 
-.name{
+.name {
   position: absolute;
   top: -3px;
   left: 25.3px;
-  width: 250px
+  width: 250px;
 }
 
-.nameString{
+.nameString {
   font-family: "DM Sans", sans-serif;
   background: linear-gradient(#b29344a6, #b2934400);
   border-radius: 10px;
@@ -133,14 +131,14 @@ input[type=number]{
   text-shadow: 1px 1px #b29344;
 }
 
-.weight{
+.weight {
   position: absolute;
   top: 223px;
   left: 25.3px;
-  width: 250px
+  width: 250px;
 }
 
-.weightNumber{
+.weightNumber {
   font-family: "DM Sans", sans-serif;
   background: linear-gradient(#b2934400, #b29344a6);
   border-radius: 10px;
@@ -149,7 +147,7 @@ input[type=number]{
   position: relative;
 }
 
-.temp{
+.temp {
   padding-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
@@ -161,27 +159,242 @@ input[type=number]{
   align-items: stretch;
 }
 
-.tempButtons{
+.tempButtons {
   font-family: "DM Sans", sans-serif;
   color: white;
   background-color: #7b6413;
   border: none;
   border-radius: 10px;
   padding-bottom: 5px;
-  padding-top:    5px;
-  padding-left:   10px;
-  padding-right:  10px;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-.tempButtons:hover{
+.tempButtons:hover {
+  background-color: #645210;
+}
+
+.tempAdvice {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.5);
+  width: 120%;
+  top: 45%;
+  left: -14%;
+}
+
+@media only screen and (max-width: 810px) {
+  .form {
+    background: linear-gradient(#a9852b, #c19930);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 20px;
+    gap: 35px;
+    width: 80vw;
+    margin-top: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+  margin-bottom: -20vh;
+  border-radius: 10px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .form {
+    background: linear-gradient(#a9852b, #c19930);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+    gap: 35px;
+    width: 80vw;
+    margin-top: 2vh;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+  }
+
+  .form2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10%;
+  }
+
+  input[type="number"] {
+    width: 20%;
+  }
+  .nameForm {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .imageForm {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .heightForm {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .weightForm {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .lifeSpanForm {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .tempForm {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .submit {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .submitButton {
+    font-family: "DM Sans", sans-serif;
+    font-size: large;
+    color: white;
+    background-color: #7b6413;
+    border: none;
+    border-radius: 10px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: -2%;
+  }
+
+  .warning {
+    border-color: rgb(196, 0, 0);
+  }
+
+  .danger {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    color: rgb(200, 0, 0);
+    font-size: 14px;
+    margin-top: -20px;
+  }
+
+  .label {
+    font-size: 20px;
+    margin-bottom: -10px;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+
+  /* --------------------------------------------------------------------------------------------------- */
+
+  .preview {
+    position: absolute;
+    top: 60vh;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .previewText {
+    position: absolute;
+    top: -430%;
+    left: 35%;
+    color: rgba(0, 0, 0, 0.425);
+  }
+
+  .card {
+    background-color: #b29344;
+    padding: 15px;
+    border-radius: 10px;
+    position: relative;
+  }
+
+  .img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .name {
+    position: absolute;
+    top: -3px;
+    left: 25.3px;
+    width: 250px;
+  }
+
+  .nameString {
+    font-family: "DM Sans", sans-serif;
+    background: linear-gradient(#b29344a6, #b2934400);
+    border-radius: 10px;
+    font-size: large;
+    text-shadow: 1px 1px #b29344;
+  }
+
+  .weight {
+    position: absolute;
+    top: 223px;
+    left: 25.3px;
+    width: 250px;
+  }
+
+  .weightNumber {
+    font-family: "DM Sans", sans-serif;
+    background: linear-gradient(#b2934400, #b29344a6);
+    border-radius: 10px;
+    font-size: large;
+    text-shadow: 1px 1px white;
+    position: relative;
+  }
+
+  .temp {
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    gap: 8%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    grid-gap: 15px;
+    align-items: stretch;
+  }
+
+  .tempButtons {
+    font-family: "DM Sans", sans-serif;
+    color: white;
+    background-color: #7b6413;
+    border: none;
+    border-radius: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .tempButtons:hover {
     background-color: #645210;
   }
-  
 
-.tempAdvice{
+  .tempAdvice {
     position: absolute;
     color: rgba(255, 255, 255, 0.5);
     width: 120%;
     top: 45%;
-    left: -14%
+    left: -14%;
+  }
 }

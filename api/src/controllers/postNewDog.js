@@ -1,4 +1,4 @@
-const {Dog, Temperament, conn} = require('../db')
+const {Dog, Temperament} = require('../db')
 const axios = require('axios')
 
 const postNewDog = async (req, res)=>{
@@ -31,7 +31,6 @@ const postNewDog = async (req, res)=>{
                 attributes: []
             }
         }})
-        console.log(aux[0].temperaments[0].dataValues.name);
         const showDog = {
             name,
             image,

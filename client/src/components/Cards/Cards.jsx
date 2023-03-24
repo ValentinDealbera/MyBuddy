@@ -13,9 +13,6 @@ import loading from '../../utils/dog_loader_250x250.gif'
 
 const Cards = (props) => {
   const [show, setShow] = useState(false)
-  useEffect(()=>{
-    setTimeout(()=>{setShow(true)}, 1000)
-  },[])
   const dispatch = useDispatch();
   const [filterBy, setFilterBy] = useState('')
   const [dropdown, setDropdown] = useState(false);
@@ -87,7 +84,10 @@ const Cards = (props) => {
     }
   };
   const currentCards = mapDogs().slice(indexOfFirstCard, indexOfLastCard);
-
+  useEffect(()=>{
+    if(currentCards.length > 0) setShow(true)
+    if(currentCards.length === 0) setShow(false)
+  },[currentCards])
   const pageNumbers = ["<"];
   for (let i = 1; i <= Math.ceil(alldogs.length / cardsPerPage); i++) {
     if (i === Math.ceil(alldogs.length / cardsPerPage)) {

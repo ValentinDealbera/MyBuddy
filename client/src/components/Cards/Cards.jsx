@@ -5,24 +5,20 @@ import {
   emptyFilter,
   filterByTemperaments,
   orderDogs,
-  getAllDogs,
   orderByWeight,
 } from "../../redux/actions";
 import styles from "./Cards.module.css";
 import SearchBar from "../SearchBar/SearchBar";
+import loading from '../../utils/dog_loader_250x250.gif'
 
 const Cards = (props) => {
+  const [show, setShow] = useState(false)
+  useEffect(()=>{
+    setTimeout(()=>{setShow(true)}, 1000)
+  },[])
   const dispatch = useDispatch();
   const [filterBy, setFilterBy] = useState('')
   const [dropdown, setDropdown] = useState(false);
-  useEffect(() => {
-    dispatch(emptyFilter());
-    dispatch(getAllDogs());
-    return () => {
-      dispatch(emptyFilter());
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage] = useState(8);
   const [filter, setFilter] = useState("All");
@@ -176,7 +172,11 @@ const Cards = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterBy]);
   return (
-    <div>
+    <div className={!show && styles.loading}>
+      <div  className={show && styles.done} >
+      <img src={loading} alt="Loading" />
+      </div>
+    <div className={!show && styles.hide}>
       <div className={styles.filterBar}>
         <div className={styles.tempBar}>
           <button
@@ -247,6 +247,7 @@ const Cards = (props) => {
       </div>
       <div className={styles.divGeneral}>{currentCards}</div>
       <div className={styles.paginate}>{renderPageNumbers}</div>
+    </div>
     </div>
   );
 };

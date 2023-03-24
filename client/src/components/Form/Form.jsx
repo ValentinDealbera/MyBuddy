@@ -12,10 +12,6 @@ const Form = (props) => {
   const dispatch = useDispatch()
   useEffect(()=>{
     setTemperament([])
-    return ()=>{
-      dispatch(emptyFilter())
-      dispatch(getAllDogs())
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   const navigate = useNavigate()
@@ -78,7 +74,7 @@ const Form = (props) => {
       weight: `${weightMin} - ${weightMax}`,
       life_span: `${life_spanMin} - ${life_spanMax} years`,
       temperament: temperament
-    }).then(response => response.data).then(data=> console.log(data)).catch(error=> console.log(error.message))
+    }).then(response => response.data).then(data=> dispatch(emptyFilter())).then(data=>dispatch(getAllDogs())).then(navigate('/home')).catch(error=> console.log(error.message))
     setForm({
       name: "",
       image: "",
@@ -91,8 +87,6 @@ const Form = (props) => {
       temperament: "",
     })
       setTemperament([])
-      dispatch(emptyFilter())
-      navigate("/home")
   };
   const mapTemperaments = () => {
     return props.temperaments.filter(e=> !temperament.includes(e.name)).map((e, i) => {

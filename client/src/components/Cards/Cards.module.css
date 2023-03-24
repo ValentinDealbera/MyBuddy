@@ -1,5 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
 
+.loading{
+  margin-top: 5%;
+}
+
+.done{
+  display: none;
+}
+
+
+.hide{
+  display: none;
+}
+
 .divGeneral {
   gap: 10%;
   margin: 2%;

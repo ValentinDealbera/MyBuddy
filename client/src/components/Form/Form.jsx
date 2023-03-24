@@ -61,6 +61,17 @@ const Form = (props) => {
       );
     };
     
+    function toUpperCase(strings){
+      try {
+        const newarr = strings.trim().split(' ').map(e=>{
+          const aux = e[0]
+          return aux.toUpperCase() + e.slice(1).toLowerCase()
+      })
+      return newarr.join(' ')
+      } catch (error) {
+        // console.log(error.message);
+      }
+      }
   const submitHandler = (event) => {
     event.preventDefault()
     const {name, image, heightMin, heightMax, weightMin, weightMax, life_spanMin, life_spanMax} = form
@@ -68,7 +79,7 @@ const Form = (props) => {
       return window.alert('Datos incompletos')
     }
     axios.post("http://localhost:3001/dogs", {
-      name: name,
+      name: toUpperCase(name),
       image: image,
       height: `${heightMin} - ${heightMax}`,
       weight: `${weightMin} - ${weightMax}`,
@@ -119,28 +130,28 @@ const Form = (props) => {
       </div>
       <div className={styles.heightForm}>
       <label className={styles.label}>height </label>
-      <input className={styles.input && errors.heightMin !== 0 && styles.warning} onChange={changeHandler} type="number" value={form.heightMin ? form.heightMin : ''} name="heightMin" />
+      <input min='0' className={styles.input && errors.heightMin !== 0 && styles.warning} onChange={changeHandler} type="number" value={form.heightMin ? form.heightMin : ''} name="heightMin" />
       <p className={styles.danger}>{errors.heightMin}</p>
       <label className={styles.label}> - </label>
-      <input className={styles.input && errors.heightMax !== 0 && styles.warning} onChange={changeHandler} type="number" value={form.heightMax ? form.heightMax : ''} name="heightMax" />
+      <input min='0' className={styles.input && errors.heightMax !== 0 && styles.warning} onChange={changeHandler} type="number" value={form.heightMax ? form.heightMax : ''} name="heightMax" />
       <p className={styles.danger}>{errors.heightMax}</p>
       <label className={styles.label}> Cm.</label>
       </div>
       <div className={styles.weightForm}>
       <label className={styles.label}>weight </label>
-      <input className={styles.input && errors.weightMin !== 0 && styles.warning} onChange={changeHandler} type="number" value={form.weightMin ? form.weightMin : ''} name="weightMin" />
+      <input min='0' className={styles.input && errors.weightMin !== 0 && styles.warning} onChange={changeHandler} type="number" value={form.weightMin ? form.weightMin : ''} name="weightMin" />
       <p className={styles.danger}>{errors.weightMin}</p>
       <label className={styles.label}> - </label>
-      <input className={styles.input && errors.weightMax !== 0 && styles.warning} onChange={changeHandler} type="number" value={form.weightMax ? form.weightMax : ''} name="weightMax" />
+      <input min='0' className={styles.input && errors.weightMax !== 0 && styles.warning} onChange={changeHandler} type="number" value={form.weightMax ? form.weightMax : ''} name="weightMax" />
       <p className={styles.danger}>{errors.weightMax}</p>
       <label className={styles.label}> kg.</label>
       </div>
       <div className={styles.lifeSpanForm}>
       <label className={styles.label}>life span </label>
-      <input className={styles.input && errors.life_spanMin !== 0 && styles.warning} onChange={changeHandler} type="number" value={form.life_spanMin ? form.life_spanMin : ''} name="life_spanMin" />
+      <input min='0' className={styles.input && errors.life_spanMin !== 0 && styles.warning} onChange={changeHandler} type="number" value={form.life_spanMin ? form.life_spanMin : ''} name="life_spanMin" />
       <p className={styles.danger}>{errors.life_spanMin}</p>
       <label className={styles.label}> - </label>
-      <input className={styles.input && errors.life_spanMax !== 0 && styles.warning} onChange={changeHandler} type="number" value={form.life_spanMax ? form.life_spanMax : ''} name="life_spanMax" />
+      <input min='0' className={styles.input && errors.life_spanMax !== 0 && styles.warning} onChange={changeHandler} type="number" value={form.life_spanMax ? form.life_spanMax : ''} name="life_spanMax" />
       <p className={styles.danger}>{errors.life_spanMax}</p>
       <label className={styles.label}> Years</label>
       </div>
@@ -160,7 +171,7 @@ const Form = (props) => {
         <img className={styles.img} src={preview.image} alt={props.name} />
         </div>
         <div className={styles.name}>
-        <p className={styles.nameString}>{preview.name}</p>
+        <p className={styles.nameString}>{toUpperCase(preview.name)}</p>
         </div>
         <div className={styles.weight}>
         <p className={styles.weightNumber}>{preview.weightMin} - {preview.weightMax} kg.</p>

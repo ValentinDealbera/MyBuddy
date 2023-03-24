@@ -78,7 +78,8 @@ input[type="number"] {
   justify-content: center;
   color: rgb(200, 0, 0);
   font-size: 14px;
-  margin-top: -20px;
+  margin-top: 25px;
+  margin-left: 50px;
 }
 
 .label {

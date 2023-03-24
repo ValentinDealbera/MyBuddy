@@ -172,11 +172,11 @@ const Cards = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterBy]);
   return (
-    <div className={!show && styles.loading}>
-      <div  className={show && styles.done} >
+    <div className={!show ? styles.loading : undefined}>
+      <div  className={show ? styles.done : undefined} >
       <img src={loading} alt="Loading" />
       </div>
-    <div className={!show && styles.hide}>
+    <div className={!show ? styles.hide : undefined}>
       <div className={styles.filterBar}>
         <div className={styles.tempBar}>
           <button

@@ -1,11 +1,15 @@
 import { useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
 import styles from './Detail.module.css'
 import axios from "axios"
+import { useDispatch } from "react-redux"
+import { emptyFilter, getAllDogs } from "../../redux/actions"
 
 const Detail = () => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const {idRaza} = useParams() 
     const [dog, setDog] = useState({})
     useEffect(()=>{
@@ -17,7 +21,11 @@ const Detail = () => {
         })
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
-    
+    const deleteHandler = () => {
+        axios.delete('http://localhost:3001/dogs/' + idRaza)
+        .then(response => response.data).then(data=> dispatch(emptyFilter())).then(data=>dispatch(getAllDogs())).then(navigate('/home')).catch(error=> console.log(error.message))
+        navigate('/home')
+    }
     return (
         <div className={styles.card}>
           <div className={styles.textbox}>
@@ -29,6 +37,7 @@ const Detail = () => {
             <div className={dog?.temperament?.length <= 3 ? styles.tempGridFew : styles.tempGridMuch}>
             {dog?.temperament?.map(e=><button className={styles.tempButton} key={e}>{e}</button>)}
             </div >
+            <button className={idRaza.length > 4 ? styles.deleteButton : styles.showNone} onClick={deleteHandler} >🗑️</button>
             <Link to={'/home'}>
             <button className={styles.button}>Home</button>
             </Link>

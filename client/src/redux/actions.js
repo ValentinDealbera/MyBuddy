@@ -16,7 +16,7 @@ const orderByWeight = (id) => {
 
 const getAllDogs = () => {
     return async function (dispatch){
-        const response = await axios.get("http://localhost:3001/dogs")
+        const response = await axios.get("/dogs")
         return dispatch({
             type: GET_ALLDOGS,
             payload: response.data
@@ -53,7 +53,7 @@ const emptyFilter = () => {
 
 const getTemperaments = () => {
     return async function (dispatch){
-        const response = await axios.get("http://localhost:3001/temperaments")
+        const response = await axios.get("/temperaments")
         const set = new Set(response.data)
         const arr = Array.from(set)
         return dispatch({

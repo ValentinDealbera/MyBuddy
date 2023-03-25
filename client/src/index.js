@@ -6,6 +6,10 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import store from "./redux/store";
 import { Provider } from "react-redux";
+import axios from 'axios'
+
+axios.defaults.baseURL = 'https://mybuddyback-production.up.railway.app'
+// axios.defaults.baseURL = 'https://localhost:3001/'
 
 ReactDOM.render(
   <Provider store={store}>

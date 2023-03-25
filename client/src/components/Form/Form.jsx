@@ -78,7 +78,7 @@ const Form = (props) => {
     if (!name || !image || !heightMin || !heightMax || !weightMin || !weightMax || !life_spanMin || !life_spanMax || temperament.length < 1){
       return window.alert('Datos incompletos')
     }
-    axios.post("http://localhost:3001/dogs", {
+    axios.post("/dogs", {
       name: toUpperCase(name),
       image: image,
       height: `${heightMin} - ${heightMax}`,

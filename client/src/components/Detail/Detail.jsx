@@ -13,7 +13,7 @@ const Detail = () => {
     const {idRaza} = useParams() 
     const [dog, setDog] = useState({})
     useEffect(()=>{
-        axios.get('http://localhost:3001/dogs/' + idRaza)
+        axios.get('/dogs/' + idRaza)
         .then(response=>response.data)
         .then(data=>{
           setDog(data[0])
@@ -22,7 +22,7 @@ const Detail = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
     const deleteHandler = () => {
-        axios.delete('http://localhost:3001/dogs/' + idRaza)
+        axios.delete('/dogs/' + idRaza)
         .then(response => response.data).then(data=> dispatch(emptyFilter())).then(data=>dispatch(getAllDogs())).then(navigate('/home')).catch(error=> console.log(error.message))
         navigate('/home')
     }

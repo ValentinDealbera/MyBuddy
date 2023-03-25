@@ -67,7 +67,7 @@
   padding-right:  10px;
 }
 
-@media only screen and (min-width: 1350px) {
+@media only screen and (min-width: 1450px) {
   .name{
     position: absolute;
     top: -3px;

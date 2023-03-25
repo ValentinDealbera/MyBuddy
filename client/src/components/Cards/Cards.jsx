@@ -163,6 +163,7 @@ const Cards = (props) => {
     orderHandler(event)
   }
   const errorHandler = () => {
+    setFilter('All')
     dispatch(emptyFilter());
       dispatch(filterByRace(''));
   }

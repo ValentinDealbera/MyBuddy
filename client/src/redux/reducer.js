@@ -39,7 +39,7 @@ const reducer = (state = initialState, action) => {
     case FILTER_BY_RACE:
       state.filteredDogs = state.allDogs;
       const filteredRaceArray = state.filteredDogs.filter((e) =>
-        e.name.toLowerCase().includes(action.payload)
+        e.name.toLowerCase().includes(action.payload.toString())
       );
       return {
         ...state,

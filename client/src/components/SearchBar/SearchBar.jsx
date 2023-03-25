@@ -18,11 +18,13 @@ const SearchBar = (props) => {
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       dispatch(emptyFilter());
+      props.setCurrentPage(1)
       dispatch(filterByRace(search));
     }
   };
   const searchHandler = (event) => {
     dispatch(emptyFilter());
+      props.setCurrentPage(1)
       dispatch(filterByRace(search));
   }
   return (

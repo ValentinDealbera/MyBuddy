@@ -224,7 +224,7 @@ const Cards = (props) => {
           )}
         </div>
         <div className={styles.searchBar}>
-          <SearchBar />
+          <SearchBar setCurrentPage={setCurrentPage} />
         </div>
         <div className={styles.filterCards}>
           <label>by: </label>

@@ -38,7 +38,8 @@
 
 .navbarButton:hover{
     text-decoration-line: underline;
-    text-shadow: 1px 1px 1px 1px rgb(255, 255, 255);
+cursor: pointer;
+text-shadow: 1px 1px 1px 1px rgb(255, 255, 255);
 }
 
 @media only screen and (max-width: 768px) {
@@ -79,5 +80,6 @@
   .navbarButton:hover{
       text-decoration-line: underline;
       text-shadow: 1px 1px 1px 1px rgb(255, 255, 255);
+      cursor: pointer;
   }
 }

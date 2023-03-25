@@ -52,6 +52,7 @@ const Cards = (props) => {
     if (filter === "Created") {
       const dogsToShow = alldogs.filter((e) => typeof e.id === "string");
       alldogs = dogsToShow;
+      
       return dogsToShow.map((dog) => {
         return (
           <Card
@@ -86,9 +87,9 @@ const Cards = (props) => {
   };
   const currentCards = mapDogs().slice(indexOfFirstCard, indexOfLastCard);
   useEffect(()=>{
-    if(currentCards.length > 0) setShow(true)
-    if(currentCards.length === 0) setShow(false)
-  },[currentCards])
+    if(alldogs.length > 0) setShow(true)
+    if(alldogs.length === 0) setShow(false)
+  },[alldogs])
   const pageNumbers = ["<"];
   for (let i = 1; i <= Math.ceil(alldogs.length / cardsPerPage); i++) {
     if (i === Math.ceil(alldogs.length / cardsPerPage)) {

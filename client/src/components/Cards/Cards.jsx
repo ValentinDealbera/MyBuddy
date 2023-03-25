@@ -6,6 +6,7 @@ import {
   filterByTemperaments,
   orderDogs,
   orderByWeight,
+  filterByRace,
 } from "../../redux/actions";
 import styles from "./Cards.module.css";
 import SearchBar from "../SearchBar/SearchBar";
@@ -160,6 +161,10 @@ const Cards = (props) => {
     setFilterBy(event.target.value)
     orderHandler(event)
   }
+  const errorHandler = () => {
+    dispatch(emptyFilter());
+      dispatch(filterByRace(''));
+  }
   useEffect(() => {
     if (filterBy === 'weight') {
       dispatch(emptyFilter());
@@ -175,6 +180,7 @@ const Cards = (props) => {
     <div className={!show ? styles.loading : undefined}>
       <div  className={show ? styles.done : undefined} >
       <img src={loading} alt="Loading" />
+      <button className={styles.errorButton}  onClick={errorHandler}>Home</button>
       </div>
     <div className={!show ? styles.hide : undefined}>
       <div className={styles.filterBar}>

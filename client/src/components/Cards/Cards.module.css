@@ -296,10 +296,10 @@ cursor: pointer;
     gap: 10%;
     margin: -5%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(80%, 1fr));
     grid-gap: 1%;
     align-items: stretch;
-    margin-bottom: 40%;
+    margin-bottom: 42.5%;
     margin-top: 5%;
   }
   
@@ -310,4 +310,5 @@ cursor: pointer;
     display: inline-block;
     width: 70%;
 }
+
 }

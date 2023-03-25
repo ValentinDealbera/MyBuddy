@@ -96,9 +96,7 @@
   
   .name{
     width: 230px;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0%;
+    left: 0px;
   }
   
   .nameString{

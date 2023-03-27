@@ -112,12 +112,12 @@ const Cards = (props) => {
       }
       return setCurrentPage(Number(currentPage) - Number(1));
     }
-    setCurrentPage(event.target.id);
+    setCurrentPage(Number(event.target.id));
   };
   const renderPageNumbers = pageNumbers.map((number) => {
     return (
       <button     
-        className={styles.paginate}
+        className={currentPage === number ? styles.paginateOn : styles.paginateOff}
         key={number}
         id={number}
         onClick={handleClick}

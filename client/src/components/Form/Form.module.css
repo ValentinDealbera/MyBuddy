@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
 .form {
   margin-top: 1.6%;
-  background: linear-gradient(#a9852b, #c19930);
+  background: linear-gradient(to bottom right ,#a9852b, #c19930);
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -11,6 +11,7 @@
   margin-bottom: -20px;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 10px;
 }
 
 .form2 {

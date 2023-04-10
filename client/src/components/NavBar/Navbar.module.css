@@ -42,6 +42,33 @@ cursor: pointer;
 text-shadow: 1px 1px 1px 1px rgb(255, 255, 255);
 }
 
+@media only screen and (max-width: 810px){
+  .banner{
+    background-color: #A9852B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    width: 100vw;
+    margin-left: -25px;
+    margin-top: -25px;
+    position: relative;
+    font-family: "DM Sans", sans-serif;
+  }
+
+  .navbar{
+    background-color: #C19930;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 4vh;
+  width: 100vw;
+  margin-left: -25px;
+  position: relative;
+  font-size: small;
+}
+}
+
 @media only screen and (max-width: 768px) {
   .banner{
     background-color: #A9852B;

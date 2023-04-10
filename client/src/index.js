@@ -8,8 +8,8 @@ import store from "./redux/store";
 import { Provider } from "react-redux";
 import axios from 'axios'
 
-// axios.defaults.baseURL = 'https://mybuddyback-production.up.railway.app'
-axios.defaults.baseURL = 'http://localhost:3001'
+axios.defaults.baseURL = 'https://my-buddyback.onrender.com'
+// axios.defaults.baseURL = 'http://localhost:3001'
 
 ReactDOM.render(
   <Provider store={store}>

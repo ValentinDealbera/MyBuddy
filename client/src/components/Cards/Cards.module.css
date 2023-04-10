@@ -33,7 +33,7 @@ background-color: #816723;
 }
 
 .divGeneral {
-  gap: 10%;
+  gap: 0%;
   margin: 2%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));

@@ -75,8 +75,16 @@ const Form = (props) => {
   const submitHandler = (event) => {
     event.preventDefault()
     const {name, image, heightMin, heightMax, weightMin, weightMax, life_spanMin, life_spanMax} = form
+    const existentDog = props.filteredDogs.filter(e => {
+      return e.name.toLowerCase() === name.toLowerCase()
+    })
+    console.log(existentDog);
     if (!name || !image || !heightMin || !heightMax || !weightMin || !weightMax || !life_spanMin || !life_spanMax || temperament.length < 1){
       return window.alert('Datos incompletos')
+    }
+    if ( existentDog.length !== 0 ) {
+      console.log(existentDog);
+      return window.alert('La raza ingresada ya existe')
     }
     axios.post("/dogs", {
       name: toUpperCase(name),

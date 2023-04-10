@@ -33,7 +33,7 @@ const getDogsByName = async (req, res)=>{
             }
         })
         const allDogs = [...formatedDogs, ...formatedDatabaseDogs]
-        const specificDog = allDogs.filter(e=>e.name.toLowerCase().includes(name))
+        const specificDog = allDogs.filter(e=>e.name.toLowerCase().includes(name.toLowerCase()))
         if (!name){
             return res.status(400).json({error: 'Ingresa una raza'})
         }

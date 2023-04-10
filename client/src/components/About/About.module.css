@@ -1,3 +1,15 @@
+@media only screen and (min-width: 1300px) {
+    .words{
+        margin-left: 41.5vw;
+        line-height: 170%;
+        height: 44vh;
+        padding: 20px;
+        width: 30vw;
+        position: absolute;
+        top: 15vh;
+    }
+}
+
 .about{
     font-family: "DM Sans", sans-serif;
     background: linear-gradient(#A9852B, #f0f0f000);
@@ -111,7 +123,7 @@
         object-fit: cover;
         object-position: 30% 5%;
         border-radius: 10px;
-        top: 20%;
+        top: 2.5%;
         left: 4%;
       }
   }

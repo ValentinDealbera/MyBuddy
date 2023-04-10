@@ -195,7 +195,7 @@ cursor: pointer;
   }
   
   .divGeneral {
-    gap: 10%;
+    /* gap: 10%; */
     margin: 2%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
@@ -305,7 +305,7 @@ cursor: pointer;
 
 @media only screen and (max-width: 768px) {
   .divGeneral {
-    gap: 10%;
+    /* gap: 10%; */
     margin: -5%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(80%, 1fr));

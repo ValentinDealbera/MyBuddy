@@ -10,7 +10,12 @@ const deleteDog = require('../controllers/deleteDog');
 const router = Router();
 
 // Configurar los routers
+try{
 router.get('/dogs', getAllDogs)
+}
+catch(error){
+  console.log(error)
+}
 
 router.get('/dogs/name', getDogsByName)
 

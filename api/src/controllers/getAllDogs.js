@@ -15,7 +15,7 @@ const getAllDogs = async (req, res)=>{
             return {
             id: e.id,    
             name: e.name,
-            image: e.image,
+            //image: e.image,
             height: e.height,
             weight: e.weight,
             life_span: e.life_span,
@@ -25,7 +25,7 @@ const getAllDogs = async (req, res)=>{
             return {
                 name: e.name,
                 id: e.id,
-                image: e.image.url,
+               // image: e.image.url,
                 weight: e.weight.metric,
                 height: e.height.metric,
                 life_span: e.life_span,
